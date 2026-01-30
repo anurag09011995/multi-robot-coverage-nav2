@@ -250,7 +250,7 @@ mobile_bot_ws/
 │   ├── mobile2_bot_coverage/
 │   │   ├── coverage_dispatcher.py
 │   │   ├── coverage_grid_server.py
-│   │   └── scan_stamper.py   # Optional showcase node
+│   │   
 │   └── bringup/
 ├── README.md
 └── .gitignore
