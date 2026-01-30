@@ -1,0 +1,27 @@
+# ===== ROS2 / colcon =====
+build/
+install/
+log/
+
+# ===== Python =====
+__pycache__/
+*.pyc
+
+# ===== Editor =====
+.vscode/
+.idea/
+
+# ===== OS junk =====
+.DS_Store
+Thumbs.db
+scan.txt
+structure.txt
+tf.txt
+
+
+# ===== Don't push these local-only nodes (keep them in your PC) =====
+src/mobile2_bot_description/mobile2_bot_description/tf_filter.py
+src/mobile2_bot_description/mobile2_bot_description/bridge_node.py
+src/mobile2_bot_description/mobile2_bot_description/tcp_ros_bridge.py
+src/m-explore-ros2/
+src/matlab_ros2_tcp_bridge_pkg/

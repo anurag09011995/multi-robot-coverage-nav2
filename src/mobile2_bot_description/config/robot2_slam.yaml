@@ -1,0 +1,37 @@
+/robot2/slam_toolbox_robot2:
+  ros__parameters:
+    use_sim_time: true
+    publish_tf: true
+    map_frame: robot2map
+    odom_frame: robot2odom
+    base_frame: robot2base_link
+    scan_topic: scan
+    mode: mapping
+
+    # Frame fixes
+    scan_header_frame: robot2lidar
+    use_scan_header_stamp: true
+    use_scan_header_frame: true
+    transform_timeout: 3.0
+    transform_tolerance: 0.8
+    transform_publish_period: 0.02
+    map_update_interval: 2.0
+    minimum_time_interval: 0.0
+    resolution: 0.05
+    map_start_at_dock: false
+
+    # Solver tuning
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: JACOBI
+    ceres_trust_strategy: LM
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+
+    # Queue & scan handling improvements
+    max_laser_queue_size: 50
+    tf_message_filter_target_frame: robot2map
+    throttle_scans: 1
+
+    qos_overrides:
+      /scan:
+        reliability: "best_effort"

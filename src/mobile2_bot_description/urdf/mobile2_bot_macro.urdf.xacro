@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<robot name="mobile2_bot"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default=""/>
+
+  <xacro:macro name="mobile2_bot" params="prefix">
+
+    <xacro:include filename="$(find mobile2_bot_description)/urdf/materials.xacro" />
+    <xacro:include filename="$(find mobile2_bot_description)/urdf/mobile2_bot.trans" />
+    <xacro:include filename="$(find mobile2_bot_description)/urdf/mobile2_bot.gazebo" />
+
+    <!-- BASE LINK -->
+    <link name="${prefix}base_link">
+      <inertial>
+        <origin xyz="0 0 0.0125" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.00038" iyy="0.00087" izz="0.00116" ixy="0.0" iyz="0.0" ixz="0.0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mobile2_bot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.15 0.10 0.025"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- RIGHT WHEEL -->
+    <link name="${prefix}right_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.045"/>
+        <inertia ixx="1.0e-05" iyy="1.4e-05" izz="1.0e-05" ixy="0" iyz="0" ixz="0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mobile2_bot_description/meshes/right_wheel.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="mobile2_bot_color0"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.025"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LEFT WHEEL -->
+    <link name="${prefix}left_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.045"/>
+        <inertia ixx="1.0e-05" iyy="1.4e-05" izz="1.0e-05" ixy="0" iyz="0" ixz="0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mobile2_bot_description/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="mobile2_bot_color0"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.025"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LIDAR -->
+    <link name="${prefix}lidar">
+      <inertial>
+        <origin xyz="0 0 0.005" rpy="0 0 0"/>
+        <mass value="0.02"/>
+        <inertia ixx="3.0e-06" iyy="3.0e-06" izz="7.0e-06" ixy="0" iyz="0" ixz="0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mobile2_bot_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="mobile2_bot_color1"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://mobile2_bot_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- JOINTS -->
+    <joint name="${prefix}revolute_1" type="continuous">
+      <origin xyz="0.0 -0.05 0.0125" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}right_wheel"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="10.0" velocity="10.0"/>
+    </joint>
+
+    <joint name="${prefix}revolute_2" type="continuous">
+      <origin xyz="0.0 0.05 0.0125" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}left_wheel"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="10.0" velocity="10.0"/>
+    </joint>
+
+    <joint name="${prefix}lidar_joint" type="fixed">
+      <origin xyz="0.04 0.0 0.058" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}lidar"/>
+    </joint>
+
+  </xacro:macro>
+  <xacro:mobile2_bot prefix="$(arg prefix)"/>
+
+</robot>
