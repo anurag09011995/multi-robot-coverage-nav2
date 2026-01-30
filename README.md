@@ -242,6 +242,8 @@ ros2 run mobile2_bot_coverage coverage_dispatcher
 ```
 
 Repository Structure
+
+```
 mobile_bot_ws/
 ├── src/
 │   ├── mobile2_bot_description/
@@ -252,6 +254,7 @@ mobile_bot_ws/
 │   └── bringup/
 ├── README.md
 └── .gitignore
+```
 
 ---
 
