@@ -222,17 +222,17 @@ colcon build
 source install/setup.bash
 
 
-    Launch Simulation + Nav2
-ros2 launch mobile_bot_bringup main_simulation.launch.py (THIS WILL LAUNCH GAZEBO WORLD WITH ROBOTS AND NAV2 SETUP)
+Launch Simulation + Nav2
+    ros2 launch mobile_bot_bringup main_simulation.launch.py (THIS WILL LAUNCH GAZEBO WORLD WITH ROBOTS AND NAV2 SETUP)
 
-    Launch Rviz to see the setup
-rviz2 -d ~/mobile_bot_ws/src/mobile2_bot_description/config/multi2_robot.rviz 
+Launch Rviz to see the setup
+    rviz2 -d ~/mobile_bot_ws/src/mobile2_bot_description/config/multi2_robot.rviz 
 
-    Start Coverage Grid Server
-ros2 run mobile2_bot_coverage coverage_grid_server
+Start Coverage Grid Server
+    ros2 run mobile2_bot_coverage coverage_grid_server
 
-    Start Dispatcher
-ros2 run mobile2_bot_coverage coverage_dispatcher
+Start Dispatcher
+    ros2 run mobile2_bot_coverage coverage_dispatcher
 
 ## Repository Structure
 
