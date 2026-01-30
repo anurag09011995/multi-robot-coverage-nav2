@@ -213,39 +213,40 @@ Once coverage reaches **≥ 98%**:
 ![Gazebo Multi Robot Simulation](images/gazebo_multi_robot.png)
 
 
-
 ## How to Run
-
-### Build Workspace
-
+Build Workspace
 colcon build
 source install/setup.bash
 
-
 Launch Simulation + Nav2
-    ros2 launch mobile_bot_bringup main_simulation.launch.py (THIS WILL LAUNCH GAZEBO WORLD WITH ROBOTS AND NAV2 SETUP)
 
-Launch Rviz to see the setup
-    rviz2 -d ~/mobile_bot_ws/src/mobile2_bot_description/config/multi2_robot.rviz 
+This launches the Gazebo world, spawns the robots, and starts the Nav2 stack.
+
+ros2 launch mobile_bot_bringup main_simulation.launch.py
+
+Launch RViz
+
+Use the preconfigured multi-robot RViz setup:
+
+rviz2 -d ~/mobile_bot_ws/src/mobile2_bot_description/config/multi2_robot.rviz
 
 Start Coverage Grid Server
-    ros2 run mobile2_bot_coverage coverage_grid_server
+ros2 run mobile2_bot_coverage coverage_grid_server
 
 Start Dispatcher
-    ros2 run mobile2_bot_coverage coverage_dispatcher
+ros2 run mobile2_bot_coverage coverage_dispatcher
 
-## Repository Structure
-
+Repository Structure
 mobile_bot_ws/
 ├── src/
-│   ├── mobile_bot_description/
+│   ├── mobile2_bot_description/
 │   ├── mobile2_bot_coverage/
 │   │   ├── coverage_dispatcher.py
 │   │   ├── coverage_grid_server.py
-│   │   └── sca_stamper.py (optional showcase node)
+│   │   └── scan_stamper.py   # Optional showcase node
 │   └── bringup/
 ├── README.md
-├── .gitignore
+└── .gitignore
 
 ---
 
