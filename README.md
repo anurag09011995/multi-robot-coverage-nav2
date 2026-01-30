@@ -215,26 +215,31 @@ Once coverage reaches **≥ 98%**:
 
 ## How to Run
 Build Workspace
+```bash
 colcon build
 source install/setup.bash
+```
 
 Launch Simulation + Nav2
 
 This launches the Gazebo world, spawns the robots, and starts the Nav2 stack.
-
+```bash
 ros2 launch mobile_bot_bringup main_simulation.launch.py
-
+```
 Launch RViz
 
 Use the preconfigured multi-robot RViz setup:
-
+```bash
 rviz2 -d ~/mobile_bot_ws/src/mobile2_bot_description/config/multi2_robot.rviz
-
+```
 Start Coverage Grid Server
+```bash
 ros2 run mobile2_bot_coverage coverage_grid_server
-
+```
 Start Dispatcher
+```bash
 ros2 run mobile2_bot_coverage coverage_dispatcher
+```
 
 Repository Structure
 mobile_bot_ws/
