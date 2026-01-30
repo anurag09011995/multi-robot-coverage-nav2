@@ -206,10 +206,14 @@ Once coverage reaches **≥ 98%**:
 
 ### Multi-Robot Coverage in RViz and Painting
 ![RViz Multi Robot Coverage](images/rviz_multi_robot_coverage.png)
+
+
 ![RViz Multi Robot Coverage](images/rviz_multi_robot_coverage_grid.png)
 
 ### Gazebo Simulation Environment
 ![Gazebo Multi Robot Simulation](images/gazebo_multi_robot_sim.png)
+
+
 ![Gazebo Multi Robot Simulation](images/gazebo_multi_robot.png)
 
 
